@@ -7,13 +7,9 @@
 #include <NewRemoteTransmitter.h>
 #include "DHT.h"
 #include "config/wifi.h"
-
+#include "config/devices.h"
 //Ritter Einstellungen
 const unsigned long address = 13043702;         //433Mhz
-
-//Steckdosen
-String switchs[] = {"Light: Pipe","Light: Lamp","Light: Net","Light: Disco","Ventilator: Upstairs","Ventilator: Downstairs","RetroPie","Monitor","Fridge","Empty"};
-int switch_length    = 9; //Anzahl der Steckdosen 
 
 //Pinbelegung
 const int tmpPin  = 12; //Temperatur

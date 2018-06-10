@@ -1,0 +1,4 @@
+//Steckdosen
+String switchs[] = {"Light: Pipe","Light: Lamp","Light: Net","Light: Disco","Ventilator: Upstairs","Ventilator: Downstairs","RetroPie","Monitor","Fridge","Empty"};
+int switch_length    = 9; //Anzahl der Steckdosen 
+

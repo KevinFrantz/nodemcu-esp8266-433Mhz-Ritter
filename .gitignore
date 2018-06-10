@@ -1,2 +1,3 @@
 #Ignore configuration files
 main/config/wifi.h
+main/config/devices.h
