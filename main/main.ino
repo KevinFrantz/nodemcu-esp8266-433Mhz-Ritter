@@ -6,12 +6,7 @@
 #include <ESP8266mDNS.h>
 #include <NewRemoteTransmitter.h>
 #include "DHT.h"
-
-//Einstellungen:
-
-// Setup for wifi connection.
-const char *ssid = "";         //SSID 
-const char *password = "";  //Wlan-Passwort
+#include "config/wifi.h"
 
 //Ritter Einstellungen
 const unsigned long address = 13043702;         //433Mhz

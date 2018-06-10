@@ -1,0 +1,3 @@
+// Setup for wifi connection.
+const char *ssid = "example_ssid";         //SSID 
+const char *password = "example_password";  //Wlan-Passwort
