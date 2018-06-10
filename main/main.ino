@@ -8,6 +8,8 @@
 #include "DHT.h"
 #include "config/wifi.h"
 #include "config/devices.h"
+#include "config/template.h"
+
 //Ritter Einstellungen
 const unsigned long address = 13043702;         //433Mhz
 
@@ -18,11 +20,7 @@ const int pirPin  = 14;  //Motion
 
 //Allgemeine Variablen initialisieren
 String income = "";
-int switch_status[9];
-
-const String titel    = "Kosmopolitoj Switch-Controll";
-const String subtitel = "NodeMCU-ESP8266 Arduino Switch-Controll for 433Mhz-RevRitter";
-  
+int switch_status[9];  
 
 //Klassen initialisieren
 DHT dht(tmpPin, DHT11);
@@ -90,8 +88,7 @@ String json(){
 
 //Liefert das Template zurück
 String html_template(){
-  //String html="<html style=\"background-image:url('https://dominodekosmopolitoj.happyforever.com/index.php/apps/files_sharing/ajax/publicpreview.php?x=1920&y=604&a=true&file=logo_transparent.png&t=7xztEknN0c5OLb8&scalingup=0)'\">";
-  String html="<html>";
+String html="<html>";
   html+="<head><title>"+titel+"</title><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\" integrity=\"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp\" crossorigin=\"anonymous\"></head>";
     html+="<body>";
       html+="<div class=\"container\">";
@@ -100,7 +97,6 @@ String html_template(){
       html+=switch_template();
       html+=temperatur();
       html+="</div>";
-      //html+="<img width=\"100%\" src=\"https://dominodekosmopolitoj.happyforever.com/index.php/apps/files_sharing/ajax/publicpreview.php?x=1920&y=604&a=true&file=logo_transparent.png&t=7xztEknN0c5OLb8&scalingup=0\" />";
       html+=footer();
     html+="</body>";
   html+="</html>";
@@ -154,7 +150,6 @@ String footer(){
   String html = "<footer>";
     html+="<div class=\"container\">";
       html +="<a href=\"?&mode=json\">JSON-Values</a> | ";
-      html +="<a href=\"http://dominodekosmopolitoj.happyforever.com/\">Nextcloud</a> |";
       html +="2017 developed by <a href=\"http://kevin-frantz.de\">Kevin</a> with <a href=\"https://www.arduino.cc/\">Arduino</a>,<a href=\"https://en.wikipedia.org/wiki/C%2B%2B\">C++</a> ";
     html+="</div>";
   html += "</ footer>";
@@ -187,7 +182,7 @@ void schalter(int unit, int state)
   delay(100);
 }
 
-//Schaltet alle Seckdosen
+//Schaltet alle Steckdosen
 void gruppe(int state)
 {
   transmitter.sendGroup(state);
