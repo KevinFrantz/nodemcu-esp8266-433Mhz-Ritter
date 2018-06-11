@@ -75,7 +75,7 @@ void handleRequest(){
   }
 
   if(server.arg("mode")=="json"){
-    server.send ( 404, "text/html", json()); //todo
+    server.send ( 200, "text/html", json());
   }else{
     server.send ( 200, "text/html", html_template());
   }
