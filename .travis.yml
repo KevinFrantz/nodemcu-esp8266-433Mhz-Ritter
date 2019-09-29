@@ -2,5 +2,5 @@ language: C++
 git:
     submodules: false
 script:
-    - shellcheck ../../administration/*.sh
+    - shellcheck ./administration/*.sh
 
