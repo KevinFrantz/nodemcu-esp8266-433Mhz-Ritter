@@ -1,4 +1,7 @@
 # nodemcu-esp8266-433Mhz-Ritter
+
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/95b050fe8c9d42f28640c1f52ae7e595)](https://www.codacy.com/manual/KevinFrantz/nodemcu-esp8266-433Mhz-Ritter?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=KevinFrantz/nodemcu-esp8266-433Mhz-Ritter&amp;utm_campaign=Badge_Grade) [![donate on paypal](https://img.shields.io/badge/donate%20-%E2%9D%A4%24%E2%82%AC%C2%A5-important)](https://www.paypal.com/cgi-bin/webscr?cmd=_s-xclick&hosted_button_id=C9USD9N26SYZU&source=url) [![License: AGPL v3](https://img.shields.io/badge/License-AGPL%20v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
+
 A software to control 433 Mhz remote plugs from ritter with an nodemcu controller
 
 ## Hardware specification
@@ -22,5 +25,10 @@ Open the main/main.ino file and transfer it over the Arduino IDE to an Nodemcu E
 To use the controller call the controller with the IP on Port 80.
 Afterwards you can use the buttons to switch 433Mhz Remote Plugs on and off.
 
+## Development
+
+### Styleguide
+You MUST hold to the [Google C++ Style Guide](https://google.github.io/styleguide/cppguide.html).
+
 ## License
-<a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/"><img alt="Creative Commons License" style="border-width:0" src="https://i.creativecommons.org/l/by-nc/4.0/88x31.png" /></a><br />This work is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-nc/4.0/">Creative Commons Attribution-NonCommercial 4.0 International License</a>.
+The ["GNU AFFERO GENERAL PUBLIC LICENSE"](./LICENSE.txt) applies to this project.
