@@ -1,14 +1,19 @@
 //Libaries importieren
+//todo: At administration scripts including cloning of DHT and Arduino sensors
+// https://randomnerdtutorials.com/10-diy-wifi-rgb-led-mood-light-with-esp8266-step-by-step/
+// https://community.openhab.org/t/led-strips-controlled-with-openhab2/30807
+// https://bitbucket.org/fuzzillogic/433mhzforarduino/wiki/Home  think about adding it permanently
 
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>
 #include <ESP8266WebServer.h>
 #include <ESP8266mDNS.h>
 #include <NewRemoteTransmitter.h>
-#include "DHT.h"
+#include <DHT.h>
 #include "config/wifi.h"
 #include "config/devices.h"
 #include "config/template.h"
+#include "domain/GUI.h"
 
 //Ritter Einstellungen
 const unsigned long address = 13043702;         //433Mhz
@@ -25,7 +30,8 @@ int switch_status[9];
 //Klassen initialisieren
 DHT dht(tmpPin, DHT11);
 ESP8266WebServer server ( 80 );
-NewRemoteTransmitter transmitter(address, sendPin);  
+NewRemoteTransmitter transmitter(address, sendPin); 
+GUI gui(titel,subtitel,&dht,switch_status,switchs,pirPin);
 
 //Arduino-Setup
 void setup(void)
@@ -77,96 +83,13 @@ void handleRequest(){
   if(server.arg("mode")=="json"){
     server.send ( 200, "text/html", json());
   }else{
-    server.send ( 200, "text/html", html_template());
+    server.send ( 200, "text/html", gui.printOutput());
   }
   delay(100);
 }
 //Liefert den JSON_Werte Value-String zurück
 String json(){
   return "{\"temperature\":\""+String(dht.readTemperature())+"\",\"humidity\":\""+String(dht.readHumidity())+"\",\"motion\":\""+String(digitalRead(pirPin))+"\"}";
-}
-
-//Liefert das Template zurück
-String html_template(){
-String html="<html>";
-  html+="<head><title>"+titel+"</title><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\" integrity=\"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp\" crossorigin=\"anonymous\"></head>";
-    html+="<body>";
-      html+="<div class=\"container\">";
-      html+="<h1>"+titel+"</h1>";
-      html+="<h2>"+subtitel+"</h2>";
-      html+=switch_template();
-      html+=temperatur();
-      html+="</div>";
-      html+=footer();
-    html+="</body>";
-  html+="</html>";
-  return html;
-}
-//Liefert das Switch-Template zurück
-String switch_template(){
-  String html="<table class=\"table\" >";
-    html+="<caption>Switchs</caption>";
-    html+="<tr><th>name</th><th>status</th><th>on</th><th>off</th></tr>";
-      for(int i=0;i<=switch_length-1;i++){
-        html+=switch_button(String(i+1),switchs[i],switch_status[i]);
-      }
-      html+=switch_button("group","Group",3);
-  html+="</table>";
-  return html;
-}
-
-//Liefert einen Button zurück
-String switch_button(String number, String name,int status){
-  String html="<tr>";
-      html+="<td>";
-        html+=name;
-      html+="</td>";
-      html+="<td>";
-        String status_picture;
-        switch(status){
-          case 1:
-            status_picture = "glyphicon-play";
-            break;
-          case 0:
-            status_picture = "glyphicon-pause";
-            break;
-          default:
-            status_picture   = "glyphicon-question-sign";
-        }
-        html+="<i class=\"glyphicon " + status_picture + "\" aria-hidden=\"true\"></i>";
-      html+="</td>";
-      html+="<td>";
-        html+="<a class=\"btn btn-success btn-block\" style=\"text-align:left;\" href=\"?switch="+ number + "&value=1\"><i class=\"glyphicon glyphicon-play\" aria-hidden=\"true\"></i> on</a>";
-      html+="</td>";
-      html+="<td>";
-        html+="<a class=\"btn btn-danger btn-block\" style=\"text-align:left;\" href=\"?switch="+ number + "&value=0\"><i class=\"glyphicon glyphicon-pause\" aria-hidden=\"true\"></i> off</a>";
-      html+="</td>";
-    html+="</tr>";
-    return html;
-}
-
-//Gibt den Seitenfooter zurück
-String footer(){
-  String html = "<footer>";
-    html+="<div class=\"container\">";
-      html +="<a href=\"?&mode=json\">JSON-Values</a> | ";
-      html +="2017 developed by <a href=\"http://kevin-frantz.de\">Kevin</a> with <a href=\"https://www.arduino.cc/\">Arduino</a>,<a href=\"https://en.wikipedia.org/wiki/C%2B%2B\">C++</a> ";
-    html+="</div>";
-  html += "</ footer>";
-  return html;
-}
-
-//Liefert die Temperatursensortabelle zurück
-String temperatur(){
-  String html="<table class=\"table\">";
-    html+="<caption>Sensors</caption>";
-    html+="<tbody>";
-        html+="<tr><td>Temperature:</td><td>" + String(dht.readTemperature()) + "&deg;C </td>";
-        html+="<tr><td>Humity:</td><td>" + String(dht.readHumidity()) + "% </td>";
-        html+="<tr><td>Motion:</td><td>" + String(digitalRead(pirPin)) + " </td>";
-    html+="</tbody>";
-  html+="</table>";
-  return html;
 }
 
 //Schaltet einen Steckdose
