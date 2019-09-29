@@ -3,6 +3,10 @@
 // https://randomnerdtutorials.com/10-diy-wifi-rgb-led-mood-light-with-esp8266-step-by-step/
 // https://community.openhab.org/t/led-strips-controlled-with-openhab2/30807
 // https://bitbucket.org/fuzzillogic/433mhzforarduino/wiki/Home  think about adding it permanently
+// https://randomnerdtutorials.com/decoding-and-encoding-json-with-arduino-or-esp8266/ 
+// https://data.nasa.gov/Space-Science/Astronomy-Picture-of-the-Day-API/ez2w-t8ua
+// https://flattr.com/creators/signup
+// https://github.com/arduino/Arduino/blob/master/build/shared/manpage.adoc
 
 #include <ESP8266WiFi.h>
 #include <WiFiClient.h>

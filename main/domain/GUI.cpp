@@ -1,4 +1,7 @@
 #include <DHT.h>
+/*
+ * @author Kevin Veen-Birkenbach
+ */
 class GUI{
   private:
     String titel;
