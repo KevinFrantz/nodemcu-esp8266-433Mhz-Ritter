@@ -6,5 +6,6 @@
  */
 class Transmitter: Actuator {
 	public:
-		Actuator(String name, String location, int status)::Actuator(name, location, status);
+		Transmitter(String name, String location, int status);//::Actuator(name, location, status);
+
 };

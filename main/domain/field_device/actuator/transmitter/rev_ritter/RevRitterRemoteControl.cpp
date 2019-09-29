@@ -5,9 +5,12 @@
  * @author Kevin Veen-Birkenbach [kevin@veen.world]
  */
 class RevRitterRemoteControl: Transmitter {
-private:
-	NewRemoteTransmitter remoteTransmitter;
-	int unit;
-public:
-	RevRitterRemoteControl(String name, String location, int status,NewRemoteTransmitter remoteTransmitter,int unit)::Transmitter;
+	private:
+		NewRemoteTransmitter* remoteTransmitter;
+		int unit;
+	public:
+		RevRitterRemoteControl(String name, String location, int status,NewRemoteTransmitter* remoteTransmitter,int unit):Transmitter(name,location,status){
+			this->remoteTransmitter = remoteTransmitter;
+			this->unit = unit;
+		};
 };

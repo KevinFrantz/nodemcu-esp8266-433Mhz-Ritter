@@ -11,4 +11,4 @@ class FieldDevice{
 		FieldDevice(String name, String location);
 		String getLocation(void);
 		String getName(void);
-}
+};

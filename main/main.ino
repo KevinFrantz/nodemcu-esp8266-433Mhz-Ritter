@@ -18,6 +18,7 @@
 #include "config/devices.h"
 #include "config/template.h"
 #include "domain/user_interface/web/html/Html.h"
+#include "domain/field_device/actuator/transmitter/rev_ritter/RevRitterRemoteControl.h"
 
 //Ritter Einstellungen
 const unsigned long address = 13043702;         //433Mhz
