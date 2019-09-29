@@ -9,10 +9,11 @@ You need an NodeMCU ESP-8266 controller which includes minimum an 433 Mhz transm
 
 ## Setup
 
-### Dependent Libraries
-The following libraries need to be present in your Arduino library folder:
-- https://github.com/adafruit/Adafruit_Sensor
-- https://github.com/1technophile/NewRemoteSwitch
+### Library dependencies
+To update the library dependencies execute:
+```bash
+bash administration/library-update.sh
+```
 
 ### Configuration
 Please adapt the configuration files in main/config to your needs
