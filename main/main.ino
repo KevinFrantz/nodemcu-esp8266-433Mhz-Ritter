@@ -17,7 +17,7 @@
 #include "config/wifi.h"
 #include "config/devices.h"
 #include "config/template.h"
-#include "domain/GUI.h"
+#include "domain/user_interface/web/html/Html.h"
 
 //Ritter Einstellungen
 const unsigned long address = 13043702;         //433Mhz
@@ -35,7 +35,7 @@ int switch_status[9];
 DHT dht(tmpPin, DHT11);
 ESP8266WebServer server ( 80 );
 NewRemoteTransmitter transmitter(address, sendPin); 
-GUI gui(titel,subtitel,&dht,switch_status,switchs,pirPin);
+Html html(titel,subtitel,&dht,switch_status,switchs,pirPin);
 
 //Arduino-Setup
 void setup(void)
@@ -87,7 +87,7 @@ void handleRequest(){
   if(server.arg("mode")=="json"){
     server.send ( 200, "text/html", json());
   }else{
-    server.send ( 200, "text/html", gui.printOutput());
+    server.send ( 200, "text/html", html.printOutput());
   }
   delay(100);
 }

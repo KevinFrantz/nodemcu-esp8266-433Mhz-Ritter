@@ -2,7 +2,7 @@
 /*
  * @author Kevin Veen-Birkenbach
  */
-class GUI{
+class Html{
   private:
     String titel;
     String subtitel;
@@ -17,6 +17,6 @@ class GUI{
     String footer(void);
     String temperatur(void);
   public:
-    GUI(String titel, String subtitel, DHT* dht, int *switch_status, String *switchs, int pirPin);
+    Html(String titel, String subtitel, DHT* dht, int *switch_status, String *switchs, int pirPin);
     String printOutput(void);
 };

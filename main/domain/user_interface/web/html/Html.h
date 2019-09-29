@@ -1,8 +1,8 @@
-#include "GUI.cpp"
+#include "Html.cpp"
 
 //Liefert das Template zurück
 
-GUI::GUI(String titel, String subtitel, DHT* dht,int *switch_status,String *switchs, int pirPin){
+Html::Html(String titel, String subtitel, DHT* dht,int *switch_status,String *switchs, int pirPin){
   this->titel = titel;
   this->subtitel = subtitel;
   this->dht = dht;
@@ -11,12 +11,12 @@ GUI::GUI(String titel, String subtitel, DHT* dht,int *switch_status,String *swit
   this->pirPin = pirPin;
 }
 
-String GUI::printOutput(void){
+String Html::printOutput(void){
   return this->html_template();
 }
 
 //Liefert das Switch-Template zurück
-String GUI::switch_template(void){
+String Html::switch_template(void){
   String html="<table class=\"table\" >";
     html+="<caption>Switchs</caption>";
     html+="<tr><th>name</th><th>status</th><th>on</th><th>off</th></tr>";
@@ -27,7 +27,7 @@ String GUI::switch_template(void){
   html+="</table>";
   return html;
 }
-String GUI::html_template(void){
+String Html::html_template(void){
 String html="<html>";
   html+="<head><title>"+titel+"</title><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css\" integrity=\"sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u\" crossorigin=\"anonymous\"><link rel=\"stylesheet\" href=\"https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css\" integrity=\"sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp\" crossorigin=\"anonymous\"></head>";
     html+="<body>";
@@ -44,7 +44,7 @@ String html="<html>";
 }
 
 //Liefert einen Button zurück
-String GUI::switch_button(String number, String name,int status){
+String Html::switch_button(String number, String name,int status){
   String html="<tr>";
       html+="<td>";
         html+=name;
@@ -74,7 +74,7 @@ String GUI::switch_button(String number, String name,int status){
 }
 
 //Gibt den Seitenfooter zurück
-String GUI::footer(void){
+String Html::footer(void){
   String html = "<footer>";
     html+="<div class=\"container\">";
       html +="<a href=\"?&mode=json\">JSON-Values</a> | ";
@@ -85,7 +85,7 @@ String GUI::footer(void){
 }
 
 //Liefert die Temperatursensortabelle zurück
-String GUI::temperatur(void){
+String Html::temperatur(void){
   String html="<table class=\"table\">";
     html+="<caption>Sensors</caption>";
     html+="<tbody>";
