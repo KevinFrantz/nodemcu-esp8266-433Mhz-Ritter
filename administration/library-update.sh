@@ -22,7 +22,7 @@ pullOrClone(){
   echo "Trying to update $FOLDER_PATH..."
   if [ -d "$FOLDER_PATH" ]
     then
-      cd $FOLDER_PATH;
+      cd "$FOLDER_PATH" || exit 1;
         if [ -d ".git" ]
           then
             git pull;
@@ -30,7 +30,7 @@ pullOrClone(){
             echo "Update not possible, because library hadn't been installed via git."
         fi
     else
-      cd $ARDUINO_LIBRARIES_PATH && git clone $2;
+      cd "$ARDUINO_LIBRARIES_PATH" && git clone "$2";
   fi
 }
 (
