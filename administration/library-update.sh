@@ -4,7 +4,7 @@
 # @author Kevin Veen-Birkenbach [kevin@veen.world]
 
 # set variables
-ARDUINO_LIBRARIES_PATH="$HOME/sketchbook/libraries";
+ARDUINO_LIBRARIES_PATH="$HOME/Arduino/libraries";
 
 # test preconditions
 if [ ! -d "$ARDUINO_LIBRARIES_PATH" ]
