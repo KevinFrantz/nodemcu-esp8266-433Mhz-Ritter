@@ -15,6 +15,12 @@ To update the library dependencies execute:
 bash administration/library-update.sh
 ```
 
+### Board
+To update the board execute:
+```bash
+bash administration/board-update.sh
+```
+
 ### Configuration
 Please adapt the configuration files in main/config to your needs
 
