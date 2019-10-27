@@ -2,3 +2,4 @@
 main/config/wifi.h
 main/config/devices.h
 .project
+.ccls-cache
