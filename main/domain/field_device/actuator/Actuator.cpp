@@ -1,4 +1,4 @@
-#include "../FieldDevice.cpp";
+#include "../FieldDevice.cpp"
 
 /**
  * This class represents a actuator
