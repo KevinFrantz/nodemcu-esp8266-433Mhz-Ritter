@@ -4,7 +4,7 @@
  * This class offers the interface to switch an RevRitter-433Mhz Plug On\Off
  * @author Kevin Veen-Birkenbach [kevin@veen.world]
  */
-class RevRitterRemoteControl: Transmitter {
+class RevRitterRemoteControl: public Transmitter {
 	private:
 		NewRemoteTransmitter* remoteTransmitter;
 		int unit;
@@ -13,4 +13,6 @@ class RevRitterRemoteControl: Transmitter {
 			this->remoteTransmitter = remoteTransmitter;
 			this->unit = unit;
 		};
+		void on(void);
+		void off(void);
 };
