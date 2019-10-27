@@ -13,4 +13,4 @@ then
   echo "https://askubuntu.com/questions/1025753/how-to-install-latest-arduino-ide"
   exit 1;
 fi
-bash $ARDUINO_PATH --upload ../main/main.ino
+bash "$ARDUINO_PATH" --upload ../main/main.ino
