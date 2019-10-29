@@ -12,7 +12,9 @@ public:
 	enum Status {
 		OFF = 0, ON = 1, UNKNOWN = 3
 	};
-	Actuator(String name, String location, int status); //: FieldDevice(name, location);
+	Actuator(String name, String location, Actuator::Status status): FieldDevice(name, location){
+		this->status = status;
+	};
 	void on(void);
 	void off(void);
 	int getStatus(void);

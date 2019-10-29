@@ -9,7 +9,7 @@ class RevRitterRemoteControl: public Transmitter {
 		NewRemoteTransmitter* remoteTransmitter;
 		int unit;
 	public:
-		RevRitterRemoteControl(String name, String location, int status,NewRemoteTransmitter* remoteTransmitter,int unit):Transmitter(name,location,status){
+		RevRitterRemoteControl(String name, String location, Actuator::Status status,NewRemoteTransmitter* remoteTransmitter,int unit):Transmitter(name,location,status){
 			this->remoteTransmitter = remoteTransmitter;
 			this->unit = unit;
 		};

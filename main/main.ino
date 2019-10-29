@@ -16,9 +16,6 @@
 #include <DHT.h>
 #include "domain/field_device/actuator/transmitter/rev_ritter/RevRitterRemoteControl.h"
 #include "config/wifi.h"
-#include "config/devices.h"
-#include "config/template.h"
-#include "domain/user_interface/web/html/Html.h"
 
 //Ritter Einstellungen
 const unsigned long address = 13043702;         //433Mhz
@@ -28,6 +25,11 @@ const int tmpPin  = 12; //Temperatur
 const int sendPin = 13; //433mhz
 const int pirPin  = 14;  //Motion
 
+NewRemoteTransmitter transmitter(address, sendPin);
+#include "config/devices.h"
+#include "config/template.h"
+#include "domain/user_interface/web/html/Html.h"
+
 //Allgemeine Variablen initialisieren
 String income = "";
 int switch_status[9];
@@ -35,7 +37,6 @@ int switch_status[9];
 //Klassen initialisieren
 DHT dht(tmpPin, DHT11);
 ESP8266WebServer server ( 80 );
-NewRemoteTransmitter transmitter(address, sendPin);
 Html html(titel,subtitel,&dht,switch_status,switchs,pirPin);
 
 //Arduino-Setup
