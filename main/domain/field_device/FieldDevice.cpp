@@ -8,7 +8,17 @@ class FieldDevice{
 		String location;
 		String name;
 	public:
-		FieldDevice(String name, String location);
+		// @todo remove following default constructor
+		FieldDevice()
+		{
+			this->name = "UNKNOWN";
+			this->location = "UNKNOWN";
+		};
+		FieldDevice(String name, String location)
+		{
+			this->name = name;
+			this->location = location;
+		};
 		String getLocation(void);
 		String getName(void);
 };

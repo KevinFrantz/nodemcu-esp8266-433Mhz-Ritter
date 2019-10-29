@@ -1,9 +1,11 @@
-FieldDevice::FieldDevice(String name, String location){
+#include "FieldDevice.cpp"
+
+/**FieldDevice::FieldDevice(String name, String location){
 	this->name = name;
 	this->location = location;
-}
+};*/
 
-FieldDevice::getLocation(void){
+String FieldDevice::getLocation(void){
 	return this->location;
 }
 
